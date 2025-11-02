@@ -1,0 +1,58 @@
+name: Multi-Platform Testing
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  ubuntu-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Print OS information
+        run: uname -a
+
+      - name: Run OS-specific command
+        run: pwd
+
+      - name: Create and display a file
+        run: |
+          echo "Hello World from Ubuntu" > hello.txt
+          cat hello.txt
+
+  windows-job:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Print OS information
+        run: systeminfo
+
+      - name: Run OS-specific command
+        run: ipconfig
+
+      - name: Create and display a file
+        run: |
+          echo Hello World from Windows > hello.txt
+          type hello.txt
+
+  macos-job:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Print OS information
+        run: uname -a
+
+      - name: Run OS-specific command
+        run: pwd
+
+      - name: Create and display a file
+        run: |
+          echo "Hello World from MacOS" > hello.txt
+          cat hello.txt
